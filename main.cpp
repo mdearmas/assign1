@@ -8,15 +8,17 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main(int argc, char **argv)
 {
   ifstream inputFile;
   string filepath;
+  string line;
   ofstream outputFile("mdearmas.txt");
 
-  int lineCount;
+  int lineCount = 0;
 
   if( outputFile.is_open() )
   {
@@ -33,8 +35,7 @@ int main(int argc, char **argv)
   inputFile.open(filepath);
   if ( inputFile.is_open() )
   {
-    string line;
-    while ( getline(filepath, line) )
+    while ( getline(inputFile, line) )
     {
       lineCount++;
       outputFile << line << endl;
