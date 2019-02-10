@@ -31,8 +31,9 @@ int main(int argc, char **argv)
   cin >> filepath;
 
   inputFile.open(filepath);
-  if ( filepath.is_open() )
+  if ( inputFile.is_open() )
   {
+    string line;
     while ( getline(filepath, line) )
     {
       lineCount++;
