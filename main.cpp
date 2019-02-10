@@ -16,7 +16,7 @@ int main(int argc, char **argv)
   ifstream inputFile;
   string filepath;
   string line;
-  ofstream outputFile("mdearmas.txt");
+  ofstream outputFile("mdearmas.txt", ios::out | ios::app);
 
   int lineCount = 0;
 
