@@ -35,8 +35,8 @@ public:
 
   bool validDNA(const string& s);
   void nucleotideTally(const string& s);
+  void resetNucleotideTally();
   void bigramTally(const string& s);
-  void incrementCount(int& i);
 
 private:
   int Acount;

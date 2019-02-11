@@ -43,3 +43,33 @@ bool DNA::validDNA(const string& s)
   }
   return result;
 }
+
+void DNA::nucleotideTally(const string& s)
+{
+  for(int i = 0; i < s.length(); ++i)
+  {
+    switch ( toupper(s[i]) )
+    {
+      case 'A':
+        Acount++;
+        break;
+      case 'G':
+        Gcount++;
+        break;
+      case 'C':
+        Ccount++;
+        break;
+      case 'T':
+        Tcount++;
+        break;
+    }
+  }
+}
+
+void DNA::resetNucleotideTally()
+{
+  Acount = 0;
+  Ccount = 0;
+  Gcount = 0;
+  Tcount = 0;
+}

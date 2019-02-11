@@ -47,29 +47,31 @@ int main(int argc, char **argv)
     {
       while ( getline(inputFile, line) )
       {
-        lineCount++;
-        for(int i = 0; i < line.length(); ++i)
+        if(d1.validDNA(line))
         {
-          charCount++;
-        }
-        outputFile << line << endl;
-        outputFile << "Number of characters in this line: " << charCount << endl;
-        charCount = 0;
-
-        if ( !d1.validDNA(line) )
-        {
-          outputFile << "This line isn't DNA." << endl;
-        }
-        else
-        {
-          outputFile << "This is DNA." << endl;
+          lineCount++;
+          for(int i = 0; i < line.length(); ++i)
+          {
+            charCount++;
+          }
+          d1.nucleotideTally(line);
         }
       }
-      outputFile << "Total number of lines in this file: " << lineCount << endl;
+      outputFile << "Total A: " << d1.getAcount() << endl;
+      outputFile << "Total C: " << d1.getCcount() << endl;
+      outputFile << "Total G: " << d1.getGcount() << endl;
+      outputFile << "Total T: " << d1.getTcount() << endl;
       outputFile << endl;
+
+      lineCount = 0;
+      d1.resetNucleotideTally();
+    }
+    else
+    {
+      cout << "Unable to open specified file. " << endl;
     }
     inputFile.close();
-    lineCount = 0;
+
 
     cout << "Do you want to process another file? Enter Y for yes and N for no. ";
     cin >> answer;
@@ -78,7 +80,6 @@ int main(int argc, char **argv)
       readIn = false;
     }
   }
-
 
   outputFile.close();
 }
