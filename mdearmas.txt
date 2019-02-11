@@ -1,0 +1,13 @@
+Makenzie De Armas
+ID: 2278709
+dearm102@mail.chapman.edu
+CPSC 350-01, Assignment 1
+
+This is a line.
+Number of characters in this line: 15
+This is a second line.
+Number of characters in this line: 22
+This is a third line.
+Number of characters in this line: 21
+Total number of lines in this file: 3
+

@@ -45,9 +45,16 @@ int main(int argc, char **argv)
       while ( getline(inputFile, line) )
       {
         lineCount++;
+        for(int i = 0; i < line.length(); ++i)
+        {
+          charCount++;
+        }
         outputFile << line << endl;
+        outputFile << "Number of characters in this line: " << charCount << endl;
+        charCount = 0;
       }
-      outputFile << lineCount << endl;
+      outputFile << "Total number of lines in this file: " << lineCount << endl;
+      outputFile << endl;
     }
     inputFile.close();
     lineCount = 0;
