@@ -14,11 +14,16 @@ using namespace std;
 int main(int argc, char **argv)
 {
   ifstream inputFile;
-  string filepath;
-  string line;
   ofstream outputFile("mdearmas.txt", ios::out | ios::app);
 
+  string filepath;
+  string line;
+  char answer;
+
   int lineCount = 0;
+  int charCount = 0;
+
+  bool readIn = true;
 
   if( outputFile.is_open() )
   {
@@ -29,20 +34,32 @@ int main(int argc, char **argv)
     outputFile << endl;
   }
 
-  cout << "Please enter your file name: ";
-  cin >> filepath;
-
-  inputFile.open(filepath);
-  if ( inputFile.is_open() )
+  while (readIn)
   {
-    while ( getline(inputFile, line) )
+    cout << "Please enter your file name: ";
+    cin >> filepath;
+
+    inputFile.open(filepath);
+    if ( inputFile.is_open() )
     {
-      lineCount++;
-      outputFile << line << endl;
+      while ( getline(inputFile, line) )
+      {
+        lineCount++;
+        outputFile << line << endl;
+      }
+      outputFile << lineCount << endl;
     }
-    outputFile << lineCount << endl;
+    inputFile.close();
+    lineCount = 0;
+
+    cout << "Do you want to process another file? Enter Y for yes and N for no. ";
+    cin >> answer;
+    if( toupper(answer) == 'N' )
+    {
+      readIn = false;
+    }
   }
 
-  inputFile.close();
+
   outputFile.close();
 }
