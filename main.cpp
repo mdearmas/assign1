@@ -55,16 +55,38 @@ int main(int argc, char **argv)
             charCount++;
           }
           d1.nucleotideTally(line);
+          d1.bigramTally(line);
         }
       }
+      outputFile << "INDIVIDUAL NUCLEOTIDES" << endl;
       outputFile << "Total A: " << d1.getAcount() << endl;
       outputFile << "Total C: " << d1.getCcount() << endl;
       outputFile << "Total G: " << d1.getGcount() << endl;
       outputFile << "Total T: " << d1.getTcount() << endl;
       outputFile << endl;
 
+      outputFile << "BIGRAM COUNT" << endl;
+      outputFile << "Total AA: " << d1.getAAcount() << endl;
+      outputFile << "Total AC: " << d1.getACcount() << endl;
+      outputFile << "Total AG: " << d1.getAGcount() << endl;
+      outputFile << "Total AT: " << d1.getATcount() << endl;
+      outputFile << "Total CA: " << d1.getCAcount() << endl;
+      outputFile << "Total CC: " << d1.getCCcount() << endl;
+      outputFile << "Total CG: " << d1.getCGcount() << endl;
+      outputFile << "Total CT: " << d1.getCTcount() << endl;
+      outputFile << "Total GA: " << d1.getGAcount() << endl;
+      outputFile << "Total GC: " << d1.getGCcount() << endl;
+      outputFile << "Total GG: " << d1.getGGcount() << endl;
+      outputFile << "Total GT: " << d1.getGTcount() << endl;
+      outputFile << "Total TA: " << d1.getTAcount() << endl;
+      outputFile << "Total TC: " << d1.getTCcount() << endl;
+      outputFile << "Total TG: " << d1.getTGcount() << endl;
+      outputFile << "Total TT: " << d1.getTTcount() << endl;
+      outputFile << endl;
+
       lineCount = 0;
       d1.resetNucleotideTally();
+      d1.resetBigramTally();
     }
     else
     {

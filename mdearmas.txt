@@ -3,34 +3,51 @@ ID: 2278709
 dearm102@mail.chapman.edu
 CPSC 350-01, Assignment 1
 
-Total A: 1Total C: 2Total G: 3Total T: 2
-Makenzie De Armas
-ID: 2278709
-dearm102@mail.chapman.edu
-CPSC 350-01, Assignment 1
+INDIVIDUAL NUCLEOTIDES
+Total A: 3
+Total C: 4
+Total G: 5
+Total T: 5
 
-Total A: 1
-Total C: 2
-Total G: 3
-Total T: 2
+BIGRAM COUNT
+Total AA: 0
+Total AC: 0
+Total AG: 1
+Total AT: 0
+Total CA: 1
+Total CC: 0
+Total CG: 1
+Total CT: 1
+Total GA: 0
+Total GC: 0
+Total GG: 0
+Total GT: 3
+Total TA: 1
+Total TC: 0
+Total TG: 0
+Total TT: 0
 
-Total A: 1
-Total C: 2
-Total G: 3
-Total T: 2
+INDIVIDUAL NUCLEOTIDES
+Total A: 3
+Total C: 4
+Total G: 5
+Total T: 5
 
-Makenzie De Armas
-ID: 2278709
-dearm102@mail.chapman.edu
-CPSC 350-01, Assignment 1
-
-Makenzie De Armas
-ID: 2278709
-dearm102@mail.chapman.edu
-CPSC 350-01, Assignment 1
-
-Total A: 1
-Total C: 2
-Total G: 3
-Total T: 2
+BIGRAM COUNT
+Total AA: 0
+Total AC: 0
+Total AG: 1
+Total AT: 0
+Total CA: 1
+Total CC: 0
+Total CG: 1
+Total CT: 1
+Total GA: 0
+Total GC: 0
+Total GG: 0
+Total GT: 3
+Total TA: 1
+Total TC: 0
+Total TG: 0
+Total TT: 0
 

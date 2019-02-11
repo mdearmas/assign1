@@ -37,6 +37,8 @@ public:
   void nucleotideTally(const string& s);
   void resetNucleotideTally();
   void bigramTally(const string& s);
+  int bigramTotal();
+  void resetBigramTally();
 
 private:
   int Acount;

@@ -73,3 +73,114 @@ void DNA::resetNucleotideTally()
   Gcount = 0;
   Tcount = 0;
 }
+
+void DNA::bigramTally(const string& s)
+{
+  for(int i = 0; i < s.length() && i + 1 < s.length(); i = i + 2)
+  {
+    if ( toupper(s[i]) == 'A')
+    {
+      switch ( toupper(s[i+1]) )
+      {
+        case 'A':
+          AAcount++;
+          break;
+        case 'G':
+          AGcount++;
+          break;
+        case 'C':
+          ACcount++;
+          break;
+        case 'T':
+          ATcount++;
+          break;
+      }
+    }
+    else if ( toupper(s[i]) == 'G' )
+    {
+      switch ( toupper(s[i+1]) )
+      {
+        case 'A':
+          GAcount++;
+          break;
+        case 'G':
+          GGcount++;
+          break;
+        case 'C':
+          GCcount++;
+          break;
+        case 'T':
+          GTcount++;
+          break;
+      }
+    }
+    else if ( toupper(s[i]) == 'C' )
+    {
+      switch ( toupper(s[i+1]) )
+      {
+        case 'A':
+          CAcount++;
+          break;
+        case 'G':
+          CGcount++;
+          break;
+        case 'C':
+          CCcount++;
+          break;
+        case 'T':
+          CTcount++;
+          break;
+      }
+    }
+    else if ( toupper(s[i]) == 'T' )
+    {
+      switch ( toupper(s[i+1]) )
+      {
+        case 'A':
+          TAcount++;
+          break;
+        case 'G':
+          TGcount++;
+          break;
+        case 'C':
+          TCcount++;
+          break;
+        case 'T':
+          TTcount++;
+          break;
+      }
+    }
+    else
+    {
+      cout << "Something went wrong." << endl;
+    }
+  }
+}
+
+int DNA::bigramTotal()
+{
+  return ( AAcount + ACcount + AGcount + ATcount + GAcount + GCcount + GGcount + GTcount + CAcount + CCcount + CGcount + CTcount + TAcount + TCcount + TGcount + TTcount );
+}
+
+void DNA::resetBigramTally()
+{
+  AAcount = 0;
+  ACcount = 0;
+  AGcount = 0;
+  ATcount = 0;
+
+  CAcount = 0;
+  CCcount = 0;
+  CGcount = 0;
+  CTcount = 0;
+
+  GAcount = 0;
+  GCcount = 0;
+  GGcount = 0;
+  GTcount = 0;
+
+  TAcount = 0;
+  TCcount = 0;
+  TGcount = 0;
+  TTcount = 0;
+}
