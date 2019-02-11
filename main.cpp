@@ -8,13 +8,14 @@
 
 #include <iostream>
 #include <fstream>
+#include "DNA.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
   ifstream inputFile;
-  ofstream outputFile("mdearmas.out", ios::out | ios::app);
+  ofstream outputFile("mdearmas.txt", ios::out | ios::app);
 
   string filepath;
   string line;
@@ -24,6 +25,8 @@ int main(int argc, char **argv)
   int charCount = 0;
 
   bool readIn = true;
+
+  DNA d1;
 
   if( outputFile.is_open() )
   {
@@ -52,6 +55,15 @@ int main(int argc, char **argv)
         outputFile << line << endl;
         outputFile << "Number of characters in this line: " << charCount << endl;
         charCount = 0;
+
+        if ( !d1.validDNA(line) )
+        {
+          outputFile << "This line isn't DNA." << endl;
+        }
+        else
+        {
+          outputFile << "This is DNA." << endl;
+        }
       }
       outputFile << "Total number of lines in this file: " << lineCount << endl;
       outputFile << endl;

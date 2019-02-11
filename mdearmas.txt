@@ -1,0 +1,19 @@
+Makenzie De Armas
+ID: 2278709
+dearm102@mail.chapman.edu
+CPSC 350-01, Assignment 1
+
+AgTCa
+Number of characters in this line: 5
+This is DNA.
+This is a line.
+Number of characters in this line: 15
+This line isn't DNA.
+AGFTW
+Number of characters in this line: 5
+This line isn't DNA.
+gcta
+Number of characters in this line: 4
+This is DNA.
+Total number of lines in this file: 4
+
