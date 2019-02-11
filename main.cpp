@@ -14,7 +14,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
   ifstream inputFile;
-  ofstream outputFile("mdearmas.txt", ios::out | ios::app);
+  ofstream outputFile("mdearmas.out", ios::out | ios::app);
 
   string filepath;
   string line;
