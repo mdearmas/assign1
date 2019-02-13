@@ -16,9 +16,9 @@ public:
 
   double probability(double count, double total);
 
-  void calculateMean(double sum, double total);
-  void calculateVariance();
-  void calculateStandardDev();
+  double calculateMean(double sum, double total);
+  double calculateVariance();
+  double calculateStandardDev();
 
   int gaussianIntGen();
 

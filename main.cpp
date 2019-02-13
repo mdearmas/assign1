@@ -63,14 +63,14 @@ int main(int argc, char **argv)
       outputFile << "For " << filepath << " — " << endl;
       outputFile << endl;
 
-      outputFile << "INDIVIDUAL NUCLEOTIDES" << endl;
+      outputFile << "INDIVIDUAL NUCLEOTIDES STATISTICS" << endl;
       outputFile << "Total A: " << d1.getAcount() << " (" << s1.probability(d1.getAcount(), charCount) << "% probability)" << endl;
       outputFile << "Total C: " << d1.getCcount() << " (" << s1.probability(d1.getCcount(), charCount) << "% probability)" << endl;
       outputFile << "Total G: " << d1.getGcount() << " (" << s1.probability(d1.getGcount(), charCount) << "% probability)" << endl;
       outputFile << "Total T: " << d1.getTcount() << " (" << s1.probability(d1.getTcount(), charCount) << "% probability)" << endl;
       outputFile << endl;
 
-      outputFile << "BIGRAM COUNT" << endl;
+      outputFile << "NUCLEOTIDE BIGRAM STATISTICS" << endl;
       outputFile << "Total AA: " << d1.getAAcount() << " (" << s1.probability(d1.getAAcount(), d1.bigramTotal()) << "% probability)" << endl;
       outputFile << "Total AC: " << d1.getACcount() << " (" << s1.probability(d1.getACcount(), d1.bigramTotal()) << "% probability)" << endl;
       outputFile << "Total AG: " << d1.getAGcount() << " (" << s1.probability(d1.getAGcount(), d1.bigramTotal()) << "% probability)" << endl;
@@ -88,6 +88,9 @@ int main(int argc, char **argv)
       outputFile << "Total TG: " << d1.getTGcount() << " (" << s1.probability(d1.getTGcount(), d1.bigramTotal()) << "% probability)" << endl;
       outputFile << "Total TT: " << d1.getTTcount() << " (" << s1.probability(d1.getTTcount(), d1.bigramTotal()) << "% probability)" << endl;
       outputFile << endl;
+
+      outputFile << "DNA STRING LENGTH STATISTICS" << endl;
+      outputFile << "Mean: " << s1.calculateMean(charCount, lineCount);
 
       lineCount = 0;
       d1.resetNucleotideTally();

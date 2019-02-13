@@ -11,3 +11,9 @@ double Stats::probability(double count, double total)
 {
   return ( (count / total ) * 100 );
 }
+
+double Stats::calculateMean(double sum, double total)
+{
+  mean = sum / total;
+  return ( mean );
+}
