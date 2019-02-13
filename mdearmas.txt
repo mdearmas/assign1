@@ -3,40 +3,18 @@ ID: 2278709
 dearm102@mail.chapman.edu
 CPSC 350-01, Assignment 1
 
-INDIVIDUAL NUCLEOTIDES
-Total A: 3
-Total C: 4
-Total G: 5
-Total T: 5
-
-BIGRAM COUNT
-Total AA: 0
-Total AC: 0
-Total AG: 1
-Total AT: 0
-Total CA: 1
-Total CC: 0
-Total CG: 1
-Total CT: 1
-Total GA: 0
-Total GC: 0
-Total GG: 0
-Total GT: 3
-Total TA: 1
-Total TC: 0
-Total TG: 0
-Total TT: 0
+For dna.txt — 
 
 INDIVIDUAL NUCLEOTIDES
-Total A: 3
-Total C: 4
-Total G: 5
-Total T: 5
+Total A: 3 (17.6471% probability)
+Total C: 4 (23.5294% probability)
+Total G: 5 (29.4118% probability)
+Total T: 5 (29.4118% probability)
 
 BIGRAM COUNT
-Total AA: 0
+Total AA: 0 (0% probability)
 Total AC: 0
-Total AG: 1
+Total AG: 1 (12.5% probability)
 Total AT: 0
 Total CA: 1
 Total CC: 0
