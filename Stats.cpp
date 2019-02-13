@@ -32,3 +32,19 @@ void Stats::calculateStandardDev()
 {
   standardDev = sqrt(variance);
 }
+
+int Stats::gaussianIntGen()
+{
+  double i1;
+  double i2;
+  double c;
+  double d;
+
+  i1 = ( (double) rand() / (RAND_MAX) );
+  i2 = ( (double) rand() / (RAND_MAX) );
+
+  c = sqrt( -2 * log(i1) ) * cos(2 * M_PI * i2);
+  d = (standardDev * c) + mean;
+
+  return ( (int) d);
+}

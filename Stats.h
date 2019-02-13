@@ -1,5 +1,6 @@
 #ifndef STATS_H
 #define STATS_H
+#define _USE_MATH_DEFINES
 
 #include <cstdlib>
 #include <time.h>

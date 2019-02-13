@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <time.h>
 #include "DNA.h"
 #include "Stats.h"
 
@@ -15,6 +17,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+  srand(time(NULL));
   ifstream inputFile;
   ofstream outputFile("mdearmas.txt", ios::out | ios::app);
 
@@ -106,6 +109,37 @@ int main(int argc, char **argv)
       outputFile << "Mean: " << s1.getMean() << endl;
       outputFile << "Variance: " << s1.getVariance() << endl;
       outputFile << "Standard Deviation: " << s1.getStandardDev() << endl;
+      outputFile << endl;
+
+      outputFile << "NEW DNA STRING GENERATION" << endl;
+      outputFile << endl;
+      for(int i = 0; i < 100; ++i)
+      {
+        double r;
+        int length;
+        string newDNA = "";
+        do {
+          length = s1.gaussianIntGen();
+        } while(length <= 0);
+
+        for(int j = 0; j < length; ++j)
+        {
+          r = rand() % 100;
+          if( r < s1.probability(d1.getAcount(), charCount))
+            {newDNA += "A";}
+          else if(r < (s1.probability(d1.getAcount(), charCount) + s1.probability(d1.getCcount(), charCount)))
+            {newDNA += "C";}
+          else if(r < (100 - s1.probability(d1.getTcount(), charCount)))
+            {newDNA += "G";}
+          else
+            {newDNA += "T";}
+        }
+        outputFile << newDNA << endl;
+      }
+
+      outputFile << endl;
+      outputFile << "End information for " << filepath << endl;
+      outputFile << endl;
 
       lineCount = 0;
       d1.resetNucleotideTally();
@@ -121,6 +155,11 @@ int main(int argc, char **argv)
     cin >> answer;
     if( toupper(answer) == 'N' )
     {
+      readIn = false;
+    }
+    else if ( toupper(answer) != 'Y')
+    {
+      cout << "Invalid answer. Program exiting. " << endl;
       readIn = false;
     }
   }

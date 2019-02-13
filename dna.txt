@@ -2,3 +2,7 @@ AGCT
 CGGT
 gtta
 GtCaC
+GTACCATGA
+TCCGGGTCAT
+tcgatcgat
+catcatcatcat
