@@ -60,6 +60,10 @@ int main(int argc, char **argv)
           d1.bigramTally(line);
         }
       }
+
+      inputFile.clear();
+      inputFile.seekg(0);
+
       outputFile << "For " << filepath << " — " << endl;
       outputFile << endl;
 
@@ -89,8 +93,19 @@ int main(int argc, char **argv)
       outputFile << "Total TT: " << d1.getTTcount() << " (" << s1.probability(d1.getTTcount(), d1.bigramTotal()) << "% probability)" << endl;
       outputFile << endl;
 
+      s1.calculateMean(charCount, lineCount);
+      while ( getline(inputFile, line) )
+      {
+        s1.addSquareDiffs(line.length());
+      }
+      s1.calculateVariance(lineCount);
+      s1.calculateStandardDev();
+
       outputFile << "DNA STRING LENGTH STATISTICS" << endl;
-      outputFile << "Mean: " << s1.calculateMean(charCount, lineCount);
+      outputFile << "Sum: " << charCount << endl;
+      outputFile << "Mean: " << s1.getMean() << endl;
+      outputFile << "Variance: " << s1.getVariance() << endl;
+      outputFile << "Standard Deviation: " << s1.getStandardDev() << endl;
 
       lineCount = 0;
       d1.resetNucleotideTally();
