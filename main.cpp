@@ -5,10 +5,10 @@
   CPSC 350-01
   Assignment 1: C++ Review
 */
-
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
+
 #include <time.h>
 #include "DNA.h"
 #include "Stats.h"
@@ -18,133 +18,138 @@ using namespace std;
 int main(int argc, char **argv)
 {
   srand(time(NULL));
-  ifstream inputFile;
-  ofstream outputFile("mdearmas.txt", ios::out | ios::app);
+  ifstream input_file;
+  ofstream output_file("mdearmas.out", ios::out | ios::app);
 
   string filepath;
   string line;
+  string new_dna = "";
+
   char answer;
 
-  int lineCount = 0;
-  int charCount = 0;
+  int line_count = 0;
+  int char_count = 0;
+  int generated_string_length;
 
-  bool readIn = true;
+  double r;
+
+  bool read_in = true;
 
   DNA d1;
   Stats s1;
 
-  if( outputFile.is_open() )
+  if( output_file.is_open() )
   {
-    outputFile << "Makenzie De Armas" << endl;
-    outputFile << "ID: 2278709" << endl;
-    outputFile << "dearm102@mail.chapman.edu" << endl;
-    outputFile << "CPSC 350-01, Assignment 1" << endl;
-    outputFile << endl;
+    output_file << "Makenzie De Armas" << endl;
+    output_file << "ID: 2278709" << endl;
+    output_file << "dearm102@mail.chapman.edu" << endl;
+    output_file << "CPSC 350-01, Assignment 1" << endl;
+    output_file << endl;
   }
 
-  while (readIn)
+  while (read_in)
   {
     cout << "Please enter your file name: ";
     cin >> filepath;
 
-    inputFile.open(filepath);
-    if ( inputFile.is_open() )
+    input_file.open(filepath);
+    if ( input_file.is_open() )
     {
-      while ( getline(inputFile, line) )
+      while ( getline(input_file, line) )
       {
         if(d1.validDNA(line))
         {
-          lineCount++;
+          line_count++;
           for(int i = 0; i < line.length(); ++i)
           {
-            charCount++;
+            char_count++;
           }
           d1.nucleotideTally(line);
           d1.bigramTally(line);
         }
       }
 
-      inputFile.clear();
-      inputFile.seekg(0);
+      input_file.clear();
+      input_file.seekg(0);
 
-      outputFile << "For " << filepath << " — " << endl;
-      outputFile << endl;
+      output_file << "For " << filepath << " — " << endl;
+      output_file << endl;
 
-      outputFile << "INDIVIDUAL NUCLEOTIDES STATISTICS" << endl;
-      outputFile << "Total A: " << d1.getAcount() << " (" << s1.probability(d1.getAcount(), charCount) << "% probability)" << endl;
-      outputFile << "Total C: " << d1.getCcount() << " (" << s1.probability(d1.getCcount(), charCount) << "% probability)" << endl;
-      outputFile << "Total G: " << d1.getGcount() << " (" << s1.probability(d1.getGcount(), charCount) << "% probability)" << endl;
-      outputFile << "Total T: " << d1.getTcount() << " (" << s1.probability(d1.getTcount(), charCount) << "% probability)" << endl;
-      outputFile << endl;
+      output_file << "INDIVIDUAL NUCLEOTIDES STATISTICS" << endl;
+      output_file << "Total A: " << d1.getAcount() << " (" << s1.probability(d1.getAcount(), char_count) << "% probability)" << endl;
+      output_file << "Total C: " << d1.getCcount() << " (" << s1.probability(d1.getCcount(), char_count) << "% probability)" << endl;
+      output_file << "Total G: " << d1.getGcount() << " (" << s1.probability(d1.getGcount(), char_count) << "% probability)" << endl;
+      output_file << "Total T: " << d1.getTcount() << " (" << s1.probability(d1.getTcount(), char_count) << "% probability)" << endl;
+      output_file << endl;
 
-      outputFile << "NUCLEOTIDE BIGRAM STATISTICS" << endl;
-      outputFile << "Total AA: " << d1.getAAcount() << " (" << s1.probability(d1.getAAcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total AC: " << d1.getACcount() << " (" << s1.probability(d1.getACcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total AG: " << d1.getAGcount() << " (" << s1.probability(d1.getAGcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total AT: " << d1.getATcount() << " (" << s1.probability(d1.getATcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total CA: " << d1.getCAcount() << " (" << s1.probability(d1.getCAcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total CC: " << d1.getCCcount() << " (" << s1.probability(d1.getCCcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total CG: " << d1.getCGcount() << " (" << s1.probability(d1.getCGcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total CT: " << d1.getCTcount() << " (" << s1.probability(d1.getCTcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total GA: " << d1.getGAcount() << " (" << s1.probability(d1.getGAcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total GC: " << d1.getGCcount() << " (" << s1.probability(d1.getGCcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total GG: " << d1.getGGcount() << " (" << s1.probability(d1.getGGcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total GT: " << d1.getGTcount() << " (" << s1.probability(d1.getGTcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total TA: " << d1.getTAcount() << " (" << s1.probability(d1.getTAcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total TC: " << d1.getTCcount() << " (" << s1.probability(d1.getTCcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total TG: " << d1.getTGcount() << " (" << s1.probability(d1.getTGcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << "Total TT: " << d1.getTTcount() << " (" << s1.probability(d1.getTTcount(), d1.bigramTotal()) << "% probability)" << endl;
-      outputFile << endl;
+      output_file << "NUCLEOTIDE BIGRAM STATISTICS" << endl;
+      output_file << "Total AA: " << d1.getAAcount() << " (" << s1.probability(d1.getAAcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total AC: " << d1.getACcount() << " (" << s1.probability(d1.getACcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total AG: " << d1.getAGcount() << " (" << s1.probability(d1.getAGcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total AT: " << d1.getATcount() << " (" << s1.probability(d1.getATcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total CA: " << d1.getCAcount() << " (" << s1.probability(d1.getCAcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total CC: " << d1.getCCcount() << " (" << s1.probability(d1.getCCcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total CG: " << d1.getCGcount() << " (" << s1.probability(d1.getCGcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total CT: " << d1.getCTcount() << " (" << s1.probability(d1.getCTcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total GA: " << d1.getGAcount() << " (" << s1.probability(d1.getGAcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total GC: " << d1.getGCcount() << " (" << s1.probability(d1.getGCcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total GG: " << d1.getGGcount() << " (" << s1.probability(d1.getGGcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total GT: " << d1.getGTcount() << " (" << s1.probability(d1.getGTcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total TA: " << d1.getTAcount() << " (" << s1.probability(d1.getTAcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total TC: " << d1.getTCcount() << " (" << s1.probability(d1.getTCcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total TG: " << d1.getTGcount() << " (" << s1.probability(d1.getTGcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << "Total TT: " << d1.getTTcount() << " (" << s1.probability(d1.getTTcount(), d1.bigramTotal()) << "% probability)" << endl;
+      output_file << endl;
 
-      s1.calculateMean(charCount, lineCount);
-      while ( getline(inputFile, line) )
+      s1.calculateMean(char_count, line_count);
+      while ( getline(input_file, line) )
       {
-        s1.addSquareDiffs(line.length());
+        s1.addSquareDifferences(line.length());
       }
-      s1.calculateVariance(lineCount);
-      s1.calculateStandardDev();
+      s1.calculateVariance(line_count);
+      s1.calculateStandardDeviation();
 
-      outputFile << "DNA STRING LENGTH STATISTICS" << endl;
-      outputFile << "Sum: " << charCount << endl;
-      outputFile << "Mean: " << s1.getMean() << endl;
-      outputFile << "Variance: " << s1.getVariance() << endl;
-      outputFile << "Standard Deviation: " << s1.getStandardDev() << endl;
-      outputFile << endl;
+      output_file << "DNA STRING LENGTH STATISTICS" << endl;
+      output_file << "Sum: " << char_count << endl;
+      output_file << "Mean: " << s1.getMean() << endl;
+      output_file << "Variance: " << s1.getVariance() << endl;
+      output_file << "Standard Deviation: " << s1.getStandardDeviation() << endl;
+      output_file << endl;
 
-      outputFile << "NEW DNA STRING GENERATION" << endl;
-      outputFile << endl;
-      for(int i = 0; i < 100; ++i)
+      output_file << "NEW DNA STRING GENERATION" << endl;
+      output_file << endl;
+
+      for(int i = 0; i < 1000; ++i)
       {
-        double r;
-        int length;
-        string newDNA = "";
         do {
-          length = s1.gaussianIntGen();
-        } while(length <= 0);
+          generated_string_length = s1.gaussianIntGen();
+        } while(generated_string_length <= 0);
 
-        for(int j = 0; j < length; ++j)
+        for(int j = 0; j < generated_string_length; ++j)
         {
           r = rand() % 100;
-          if( r < s1.probability(d1.getAcount(), charCount))
-            {newDNA += "A";}
-          else if(r < (s1.probability(d1.getAcount(), charCount) + s1.probability(d1.getCcount(), charCount)))
-            {newDNA += "C";}
-          else if(r < (100 - s1.probability(d1.getTcount(), charCount)))
-            {newDNA += "G";}
+          if( r < s1.probability(d1.getAcount(), char_count))
+            {new_dna += "A";}
+          else if(r < (s1.probability(d1.getAcount(), char_count) + s1.probability(d1.getCcount(), char_count)))
+            {new_dna += "C";}
+          else if(r < (100 - s1.probability(d1.getTcount(), char_count)))
+            {new_dna += "G";}
           else
-            {newDNA += "T";}
+            {new_dna += "T";}
         }
-        outputFile << newDNA << endl;
+        output_file << new_dna << endl;
+        new_dna = "";
+        generated_string_length = 0;
       }
 
-      outputFile << endl;
-      outputFile << "End information for " << filepath << endl;
-      outputFile << endl;
+      output_file << endl;
+      output_file << "End information for " << filepath << endl;
+      output_file << endl;
 
-      lineCount = 0;
+      line_count = 0;
       d1.resetNucleotideTally();
       d1.resetBigramTally();
-      inputFile.close();
+      input_file.close();
     }
     else
     {
@@ -155,14 +160,14 @@ int main(int argc, char **argv)
     cin >> answer;
     if( toupper(answer) == 'N' )
     {
-      readIn = false;
+      read_in = false;
     }
     else if ( toupper(answer) != 'Y')
     {
       cout << "Invalid answer. Program exiting. " << endl;
-      readIn = false;
+      read_in = false;
     }
   }
 
-  outputFile.close();
+  output_file.close();
 }

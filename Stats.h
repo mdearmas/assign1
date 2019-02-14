@@ -13,23 +13,23 @@ public:
   Stats();
 
   double getMean() const { return mean; }
-  double getSquareDiffs() const { return squareDiffs; }
+  double getSquareDifferences() const { return square_differences; }
   double getVariance() const { return variance; }
-  double getStandardDev() const { return standardDev; }
+  double getStandardDeviation() const { return standard_deviation; }
 
   double probability(double count, double total);
 
   void calculateMean(double sum, double total);
-  void addSquareDiffs(double num);
+  void addSquareDifferences(double num);
   void calculateVariance(double divisor);
-  void calculateStandardDev();
+  void calculateStandardDeviation();
 
   int gaussianIntGen();
 
 private:
   double mean;
-  double squareDiffs;
+  double square_differences;
   double variance;
-  double standardDev;
+  double standard_deviation;
 };
 #endif
