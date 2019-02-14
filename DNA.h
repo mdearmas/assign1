@@ -1,13 +1,24 @@
-#ifndef DNA_H
+/*
+  Makenzie De Armas
+  ID: 2278709
+  dearm102@mail.chapman.edu
+  CPSC 350-01
+  Assignment 1: C++ Review
+
+  Purpose: This is the header file for the DNA class.
+*/
+#ifndef DNA_H //prevents repeated expansion
 #define DNA_H
 
-#include <iostream>
-using namespace std;
+#include <iostream> //provides iostream
+
+using namespace std; //makes std accessible
 
 class DNA {
 public:
-  DNA();
+  DNA(); //default constructor
 
+  //accessors
   int getAcount() const {return Acount;}
   int getCcount() const {return Ccount;}
   int getGcount() const {return Gcount;}
@@ -33,12 +44,15 @@ public:
   int getTGcount() const {return TGcount;}
   int getTTcount() const {return TTcount;}
 
-  bool validDNA(const string& s);
-  void nucleotideTally(const string& s);
-  void resetNucleotideTally();
-  void bigramTally(const string& s);
-  int bigramTotal();
-  void resetBigramTally();
+  //other functions
+  bool validDNA(const string& s); //checks to see if passed parameter is a vaild DNA string
+
+  void nucleotideTally(const string& s); //adds the number of nucleotides within the passed string to the individual count variables
+  void resetNucleotideTally(); //resets all individual nucleotide values to 0
+  void bigramTally(const string& s); //adds the number of nucleotide bigrams within the passed string to the bigram count variables
+  void resetBigramTally(); //resets all nucleotide bigram values to 0
+
+  int bigramTotal(); //returns the total number of bigrams
 
 private:
   int Acount;
